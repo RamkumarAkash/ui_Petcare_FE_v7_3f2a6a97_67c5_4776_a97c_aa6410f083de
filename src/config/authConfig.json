@@ -1,0 +1,156 @@
+{
+    "signup": [
+        {
+            "key": "mobileNumber",
+            "label": "Mobile Number",
+            "type": "mobilenumber",
+            "editable": true,
+            "nocreate": false,
+            "validators": [
+                "required"
+            ],
+            "validationMessages": [
+                "This filed is required"
+            ]
+        },
+        {
+            "key": "email",
+            "label": "Email",
+            "type": "text",
+            "editable": true,
+            "nocreate": false,
+            "validators": [
+                "required"
+            ],
+            "validationMessages": [
+                "This filed is required"
+            ]
+        },
+        {
+            "key": "password",
+            "label": "Password",
+            "type": "password",
+            "editable": true,
+            "validators": [
+                "required",
+                "isStrongPassword"
+            ],
+            "validationMessages": [
+                "Password is required",
+                "At least one lowercase, uppercase letter, digit, special character and Minimum length of 8 characters"
+            ]
+        },
+        {
+            "key": "ConfirmPassword",
+            "label": "Confirm Password",
+            "type": "password",
+            "editable": true,
+            "validators": [
+                "required",
+                "isPasswordMatch"
+            ],
+            "validationMessages": [
+                "Password is required",
+                "Password does'nt match"
+            ]
+        }
+    ],
+    "login": [
+        {
+            "key": "mobileNumber",
+            "label": "Mobile Number",
+            "type": "mobilenumber",
+            "editable": true,
+            "nocreate": false,
+            "validators": [
+                "required"
+            ],
+            "validationMessages": [
+                "This filed is required"
+            ]
+        },
+        {
+            "key": "email",
+            "label": "Email",
+            "type": "text",
+            "editable": true,
+            "nocreate": false,
+            "validators": [
+                "required"
+            ],
+            "validationMessages": [
+                "This filed is required"
+            ]
+        },
+        {
+            "key": "Password",
+            "label": "Password",
+            "type": "password",
+            "editable": true,
+            "validators": [
+                "required"
+            ],
+            "validationMessages": [
+                "Password is required"
+            ]
+        }
+    ],
+    "forgotPassword" : [
+        {
+            "key": "mobileNumber",
+            "label": "Mobile Number",
+            "type": "mobilenumber",
+            "editable": true,
+            "nocreate": false,
+            "validators": [
+                "required"
+            ],
+            "validationMessages": [
+                "This filed is required"
+            ]
+        },
+        {
+            "key": "email",
+            "label": "Email",
+            "type": "text",
+            "editable": true,
+            "nocreate": false,
+            "validators": [
+                "required"
+            ],
+            "validationMessages": [
+                "This filed is required"
+            ]
+        }
+    ],
+    "resetPassword": [
+        {
+            "key": "Password",
+            "label": "Password",
+            "type": "password",
+            "editable": true,
+            "validators": [
+                "required",
+                "isStrongPassword"
+            ],
+            "validationMessages": [
+                "Password is required",
+                 "At least one lowercase, uppercase letter, digit, special character and Minimum length of 8 characters"
+            ]
+        },
+        {
+            "key": "ConfirmPassword",
+            "label": "Confirm Password",
+            "type": "password",
+            "editable": true,
+            "validators": [
+                "required",
+                "isPasswordMatch"
+            ],
+            "validationMessages": [
+                "Password is required",
+                "Password does'nt match"
+            ]
+        }
+    ]
+}
