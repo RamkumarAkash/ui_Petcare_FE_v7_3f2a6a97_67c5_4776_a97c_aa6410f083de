@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authConfig from "config/authConfig.json";
 import { ForgotPassword, GenerateOTP, LoginUser, ResetPassword } from "shared/services";
-import LogoIcon from "assets/Logo.png";
+import LogoIcon from "assets/Logo-ref.svg";
 import { Image } from "components";
 import session from "shared/session";
 import poster from "assets/poster.svg";
@@ -15,7 +15,7 @@ import {
 import { TextInput } from "components";
 import { OTPForm, RenderAuthControls } from "./childs";
 
-const RenderLogin = ({ controls, type }) => {
+const RenderLogin = ({ controls, type, setPasswordForm }) => {
 
   const [row, setRow] = useState({});
   const form = React.useRef(null);
@@ -55,14 +55,17 @@ const RenderLogin = ({ controls, type }) => {
   }
 
   return (
-    <Box>
+    <Box sx={{ width: '100%' }}>
       <ValidatorForm ref={form} onSubmit={handleSubmit}>
-        <Box style={{ display: 'flex' }}>
+        <Box style={{ display: 'flex', width: '100%' }}>
           <Stack direction="column" sx={{ margin: 2 }}>
             <RenderAuthControls controls={controls} onInputChange={OnInputChange} />
           </Stack>
         </Box>
-        <Button variant="contained" sx={{ width: "100%" }} onClick={(e) => OnSubmitForm(e)}>
+        <Typography variant="inherit" onClick={() => setPasswordForm(true)} sx={{ cursor: "pointer", textAlign: 'right', marginBottom: 4, color: '#9747FF', fontWeight: 'medium'}}>
+          Forgot Password?
+        </Typography>
+        <Button variant="contained" sx={{ width: "100%", borderRadius: "10px", py: '12px', fontWeight: 'medium', fontSize: '20px' }} onClick={(e) => OnSubmitForm(e)}>
           Login
         </Button>
       </ValidatorForm>
@@ -156,35 +159,42 @@ useEffect(() => {
     <>
       {OTPform ?  <OTPForm onCloseOTP={onCloseOTP} onSubmit={handleOTPSubmit} row={newRow} type={newRow.type} /> : 
         resetPasswordForm ? ( <RenderResetPassword controls={controls} email={newRow.Email} onCloseResetPwd={onCloseResetPwd} /> ) : (
-          <Box sx={{ position: 'relative', width: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Button sx={{ position: 'absolute', top: '20px', left: '20px' }}
-             onClick={() => OnCancelReset()}
-             >
-              <ArrowBackIcon />
-            </Button>
-              <Stack direction="column" gap={3}>
-              <ValidatorForm ref={form} onSubmit={onSubmit}>
-                  <Typography variant="h4" sx={{ fontWeight: 700, color: '#293241' }}>
-                    Reset your password
+          <Stack direction={'column'} sx={{ width: '100%', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', gap: '16px', bgcolor: 'rgba(255, 255, 255, 0.1)'}}>
+            <Image sx={{ width: '77px' }} alt="logo" src={LogoIcon} />
+            <Typography variant="h5" component="div" sx={{ fontWeight: "medium" }}>
+              Welcome To Company Name
+            </Typography>
+            <Box sx={{ position: 'relative', maxWidth: '516px', display: 'flex', justifyContent: 'center', alignItems: 'center',borderRadius: '10px', boxShadow: "0 4px 4px rgba(0, 0, 0, 0.25)", p: '75px 63px', mt: '20px' }}>
+                <Stack direction="column" sx={{ alignItems: 'center' }} gap={3}>
+                <ValidatorForm ref={form} onSubmit={onSubmit}>
+                    <Typography variant="h4" sx={{ fontWeight: 700, color: '#293241', textAlign: 'center', mb: '28px' }}>
+                      Forgot Password
+                    </Typography>
+                    
+                    <Typography variant="inherit" sx={{ color: '#000000', opacity: '80%', textAlign: 'center' }}>
+                      Enter your Email and we’ll send a confirmation code to reset your password.
+                    </Typography>
+                    <Box style={{ display: 'flex', width: '100%' }}>
+                      <Stack direction="column" sx={{ width: "100%", margin: '50px 0 30px 0',  }}>
+                        <RenderAuthControls controls={row.forgotPassword} onInputChange={OnInputChange} />
+                      </Stack>
+                    </Box>
+                    <Button variant="contained" sx={{ width: "100%", borderRadius: "10px", py: '12px', fontWeight: 'medium', fontSize: '20px'}} onClick={(e) => OnSubmitForm(e)}>
+                      Send Code
+                    </Button>
+                </ValidatorForm>
+                  <Typography variant="inherit" sx={{ mx: 'auto' }}>
+                    Proceed with
+                    <span onClick={onChangeType} style={{ cursor: "pointer", color: '#1976D2', marginLeft: 8, fontWeight: 'bold' }}>
+                    {newRow.type === "email" ? "Mobile Number" : "email"}
+                    </span>
                   </Typography>
-    
-                  <Box style={{ display: 'flex', width: '100%' }}>
-                    <Stack direction="column" sx={{ width: "100%", margin: 2 }}>
-                      <RenderAuthControls controls={row.forgotPassword} onInputChange={OnInputChange} />
-                    </Stack>
-                  </Box>
-                  <Button variant="contained" sx={{ width: "100%" }} onClick={(e) => OnSubmitForm(e)}>
-                    Confirm
-                  </Button>
-              </ValidatorForm>
-                <Button color="secondary" onClick={onChangeType}>
-                  Proceed with {newRow.type === "email" ? "mobileNumber" : "email"}
-                </Button>
-                <Typography variant="body1" sx={{ color: '#536075CC', mt: 2, textAlign: "center" }}>
-                  Need help? Email us meetups@gmail.com
-                </Typography>
-              </Stack>
-          </Box>
+                </Stack>
+            </Box>
+            <Typography variant="body1" sx={{ color: '#536075CC', mt: 2, textAlign: "center" }}>
+              Need help? Email us meetups@gmail.com
+            </Typography>
+          </Stack>
       )}
     </>
   )
@@ -254,8 +264,8 @@ const RenderResetPassword = ({ controls, onCloseResetPwd }) => {
             Reset your password
           </Typography>
           <RenderAuthControls controls={controls.resetPassword} onInputChange={OnInputChange} />
-          <Button variant="contained" sx={{ bgcolor: "#2E2E2E", color: "#fff", width: "100%" }} onClick={(e) => OnSubmitForm(e)}>
-            CONFIRM
+          <Button variant="contained" sx={{ bgcolor: "#1976D2", color: "#fff", width: "100%",  borderRadius: "10px", py: '12px', fontWeight: 'medium', fontSize: '20px' }} onClick={(e) => OnSubmitForm(e)}>
+            Send Code
           </Button>
           <Typography variant="body1" sx={{ color: '#536075CC', mt: 2, textAlign: "center" }}>
             Need help? Email us meetups@gmail.com
@@ -305,29 +315,37 @@ const Component = (props) => {
     ));
   }
 
+  {if(passwordForm) return <RenderForgotPassword controls={row} onCancelReset={OnCancelReset} />}
+
   return (
-    <Stack direction="row">
-      <Image sx={{ width: "49%", height: "100vh" }} alt="App" src={poster} />
-      {passwordForm ? (
-        <RenderForgotPassword controls={row} onCancelReset={OnCancelReset} />
-      ) : (
-        <Stack direction="column" alignItems="center" justifyContent="center" gap={3} sx={{ width: "540px", mx: "auto" }}>
-          <Image sx={{ width: 190, height: 100 }} alt="logo" src={LogoIcon} />
-          <Typography variant="h4" component="div" sx={{ fontWeight: "bold" }}>
-            Welcome Back
+    <Stack direction="row" alignItems="center" justifyContent="center" sx={{ height: "100vh",  background: 'linear-gradient(to right, white 70%, rgba(25, 118, 210, 0.1) 30%)' }}>     
+      <>
+        <Image sx={{ width: "40%" }} alt="App" src={poster} />
+        <Stack direction="column" alignItems="start" justifyContent="center" gap={3} 
+          sx={{ minWidth: "516px", borderRadius: '10px', boxShadow: "0 4px 4px rgba(0, 0, 0, 0.25)", m: 'auto', p: '38px 62px', bgcolor: 'white' }}>
+          <Image sx={{ width: '77px' }} alt="logo" src={LogoIcon} />
+          <Typography variant="h5" component="div" sx={{ fontWeight: "medium" }}>
+            Welcome To Company Name
           </Typography>
-          <RenderLogin controls={row.login} type={type} />
-          <Button color="secondary" onClick={onChangeType}>
-            Login with {type === "email" ? "mobileNumber" : "email"}
-          </Button>
-          <Typography variant="inherit" onClick={() => setPasswordForm(true)} sx={{ cursor: "pointer" }}>
-            forgot Password?
-          </Typography>
-          <Typography variant="inherit" onClick={() => navigate("/signup")} sx={{ cursor: "pointer" }}>
-            Signup
-          </Typography>
+          <RenderLogin controls={row.login} type={type} setPasswordForm={(e) => setPasswordForm(e)}/>
+          <Stack direction={'column'} gap={1} sx={{ width: '100%', alignItems: 'center'}}>
+            <Typography variant="inherit">
+              Don’t have an account? 
+              <span onClick={() => navigate("/signup")} style={{ cursor: "pointer", color: '#1976D2', marginLeft: 8, fontWeight: 'bold' }}>Signup</span>
+            </Typography>
+            <Typography variant="inherit" onClick={() => navigate("/signup")} sx={{ cursor: "pointer" }}>
+              or
+            </Typography>
+
+            <Typography variant="inherit">
+              Login with
+              <span onClick={onChangeType} style={{ cursor: "pointer", color: '#1976D2', marginLeft: 8, fontWeight: 'bold' }}>
+                {type === "email" ? "Mobile Number" : "Email"}
+              </span>
+            </Typography>
+          </Stack>
         </Stack>
-      )}
+      </>
     </Stack>
   )
 }

@@ -20,7 +20,7 @@ const Component = (props) => {
         <Routes>
             
 
-                                                <Route path="/Petcare_FE_v7/html" element={<LandingPage {...props} title={'LandingPage'} nolistbar={true} />} />
+                                                <Route path="/" element={<LandingPage {...props} title={'LandingPage'} nolistbar={true} />} />
             <Route exact path="/signup" element={<Signup />} />
             { !loggedin && <Route exact path="/login" element={<Login />} /> }
             
