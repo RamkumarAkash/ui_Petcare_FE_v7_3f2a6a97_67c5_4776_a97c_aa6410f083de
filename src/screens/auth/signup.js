@@ -125,14 +125,14 @@ const Component = (props) => {
     }));
   }
 
-  if(!OTPform) return <OTPForm  onCloseOTP={onCloseOTP} onSubmit={handleConfirmOTP} row={newRow} type={newRow.type} />
+  if(OTPform) return <OTPForm  onCloseOTP={onCloseOTP} onSubmit={handleConfirmOTP} row={newRow} type={newRow.type} />
   
   return (
     <Stack direction="row" alignItems="center" justifyContent="center" sx={{ height: "100vh",  background: 'linear-gradient(to right, white 70%, rgba(25, 118, 210, 0.1) 30%)' }}>     
       <>
         <Image sx={{ width: "40%" }} alt="App" src={poster} />
         <Stack direction="column" alignItems="start" justifyContent="center" gap={3} 
-          sx={{ maxWidth: "516px", borderRadius: '10px', boxShadow: "0 4px 4px rgba(0, 0, 0, 0.25)", m: 'auto', p: '38px 62px', bgcolor: 'white' }}>
+            sx={{ maxWidth: "620px", borderRadius: '10px', boxShadow: "0 4px 4px rgba(0, 0, 0, 0.25)", m: 'auto', p: '38px 62px', bgcolor: 'white' }}>
           <Image sx={{ width: '77px' }} alt="logo" src={LogoIcon} />
           <Typography variant="h5" component="div" sx={{ fontWeight: "medium" }}>
             Create An Account
