@@ -99,7 +99,7 @@ const Component = (props) => {
               ))}
             </Box>
 
-            <Button variant="contained" sx={{ width: "100%", borderRadius: "10px", py: '12px', fontWeight: 'medium', fontSize: '20px' }}
+            <Button variant="contained" sx={{ width: "100%", borderRadius: "10px", py: '12px', fontWeight: 'medium', fontSize: '20px', textTransform: 'unset' }}
              onClick={handleSubmit}>
               Confirm
             </Button>

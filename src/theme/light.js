@@ -1,4 +1,10 @@
 import createTheme from '@mui/material/styles/createTheme';
+import DMSansMedium from "assets/fonts/DMSans-Medium.ttf";
+import DMSansLight from "assets/fonts/DMSans-Light.ttf";
+import DMSansRegular from "assets/fonts/DMSans-Regular.ttf";
+import DMSansSemiBold from "assets/fonts/DMSans-SemiBold.ttf";
+import DMSansBold from "assets/fonts/DMSans-Bold.ttf";
+import DMSansExtraBold from "assets/fonts/DMSans-ExtraBold.ttf"; 
 
 const theme = createTheme({
     palette: {
@@ -12,6 +18,7 @@ const theme = createTheme({
     },
     typography: {
         fontFamily: [
+            'DM Sans',
             '-apple-system',
             'BlinkMacSystemFont',
             '"Segoe UI"',
@@ -126,7 +133,17 @@ const theme = createTheme({
                     backgroundColor: "#FFFFFF"
                 }
             }
-        }
+        },
+        MuiCssBaseline: {
+            styleOverrides: `
+                @font-face { font-display: swap; font-style : normal; src: url(${DMSansLight}); font-family : "DM Sans"; font-weight : 300;  }
+                @font-face { font-display: swap; font-style : normal; src: url(${DMSansRegular}); font-family : "DM Sans"; font-weight : 400;  }
+                @font-face { font-display: swap; font-style : bold; src: url(${DMSansMedium}); font-family : "DM Sans"; font-weight : 500;  }
+                @font-face { font-display: swap; font-style : bold; src: url(${DMSansSemiBold}); font-family : "DM Sans"; font-weight : 600;  }
+                @font-face { font-display: swap; font-style : bold; src: url(${DMSansBold}); font-family : "DM Sans"; font-weight : 700;  }
+                @font-face { font-display: swap; font-style : bold; src: url(${DMSansExtraBold}); font-family : "DM Sans"; font-weight : 800;  }
+            `,
+          },
     },
     searchIconBorder: "1px solid rgba(0, 0, 0, 0.23)",
     childAddIconBorder: "1px solid rgba(0, 0, 0, 0.23)",

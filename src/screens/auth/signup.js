@@ -128,51 +128,52 @@ const Component = (props) => {
   if(OTPform) return <OTPForm  onCloseOTP={onCloseOTP} onSubmit={handleConfirmOTP} row={newRow} type={newRow.type} />
   
   return (
-    <Stack direction="row" alignItems="center" justifyContent="center" sx={{ height: "100vh",  background: 'linear-gradient(to right, white 70%, rgba(25, 118, 210, 0.1) 30%)' }}>     
-      <>
-        <Image sx={{ width: "40%" }} alt="App" src={poster} />
-        <Stack direction="column" alignItems="start" justifyContent="center" gap={3} 
+      <Stack direction="row" alignItems="center" justifyContent="center" sx={{ height: "100vh",  background: 'linear-gradient(to right, white 70%, rgba(25, 118, 210, 0.1) 30%)', py: 3, overflow: 'auto' }}>     
+        <>
+          <Image sx={{ width: "40%" }} alt="App" src={poster} />
+          <Stack direction="column" alignItems="start" justifyContent="center" gap={3} 
             sx={{ maxWidth: "620px", borderRadius: '10px', boxShadow: "0 4px 4px rgba(0, 0, 0, 0.25)", m: 'auto', p: '38px 62px', bgcolor: 'white' }}>
-          <Image sx={{ width: '77px' }} alt="logo" src={LogoIcon} />
-          <Typography variant="h5" component="div" sx={{ fontWeight: "medium" }}>
-            Create An Account
-          </Typography>
+            <Image sx={{ width: '77px' }} alt="logo" src={LogoIcon} />
+            <Typography variant="h5" component="div" sx={{ fontWeight: "medium" }}>
+              Create An Account
+            </Typography>
 
-          <ValidatorForm ref={form} onSubmit={OnSubmit}>
-            <Box style={{ display: 'flex', width: '100%' }}>
-              <Stack direction="column" sx={{ width: "100%", margin: 2 }}>
-                <RenderAuthControls controls={row.signup} onInputChange={OnInputChange} />
+            <ValidatorForm ref={form} onSubmit={OnSubmit}>
+              <Box style={{ display: 'flex', width: '100%' }}>
+                <Stack direction="column" sx={{ width: "100%", my: 2 }}>
+                  <RenderAuthControls controls={row.signup} onInputChange={OnInputChange} />
+                </Stack>
+              </Box>
+              
+              <Button variant="contained" sx={{ bgcolor: "#1976D2",  width: "100%", borderRadius: "10px", py: '12px', fontWeight: 'medium', fontSize: '20px', textTransform: "unset" }}
+                onClick={(e) => OnSubmitForm(e)}
+              >
+                Create Account
+              </Button>
+            </ValidatorForm>
+
+
+              <Stack direction={'column'} gap={1} sx={{ width: '100%', alignItems: 'center'}}>
+            <Typography variant="inherit">
+                  Already have an account? 
+                  <span onClick={() => navigate("/login")} style={{ cursor: "pointer", color: '#1976D2', marginLeft: 8, fontWeight: 'bold' }}>
+                    Sign In
+                  </span>
+                </Typography>
+                <Typography variant="inherit">
+                  or
+                </Typography>
+
+                <Typography variant="inherit">
+                  Sign up with
+                  <span onClick={onChangeType} style={{ cursor: "pointer", color: '#1976D2', marginLeft: 8, fontWeight: 'bold' }}>
+                    {newRow.type === "email" ? "Mobile Number" : "Email"}
+                  </span>
+                </Typography>
               </Stack>
-            </Box>
-            
-             <Button variant="contained" sx={{ width: "100%", borderRadius: "10px", py: '12px', fontWeight: 'medium', fontSize: '20px' }}
-              onClick={(e) => OnSubmitForm(e)}
-             >
-               Signup
-             </Button>
-          </ValidatorForm>
-          
-          <Stack direction={'column'} gap={1} sx={{ width: '100%', alignItems: 'center'}}>
-            <Typography variant="inherit">
-            Already have an account? 
-              <span onClick={() => navigate("/signup")} style={{ cursor: "pointer", color: '#1976D2', marginLeft: 8, fontWeight: 'bold' }}>
-                Sign In
-              </span>
-            </Typography>
-            <Typography variant="inherit" onClick={() => navigate("/signup")} sx={{ cursor: "pointer" }}>
-              or
-            </Typography>
-
-            <Typography variant="inherit">
-              Sign up with
-              <span onClick={onChangeType} style={{ cursor: "pointer", color: '#1976D2', marginLeft: 8, fontWeight: 'bold' }}>
-                {newRow.type === "email" ? "Mobile Number" : "Email"}
-              </span>
-            </Typography>
           </Stack>
-        </Stack>
-      </>
-    </Stack> 
+        </>
+      </Stack> 
   )
 }
 
