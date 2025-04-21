@@ -105,7 +105,7 @@ const Component = (props) => {
             </Button>
             <Box sx={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center' }}>
               <Typography variant="inherit">
-                 Didn’t receive a code? 
+                 Didn't receive a code? 
                  <span style={{ cursor: "pointer", color: '#1976D2', marginLeft: 8, fontWeight: 'bold' }}
                   onClick={resendOTP}
                  >

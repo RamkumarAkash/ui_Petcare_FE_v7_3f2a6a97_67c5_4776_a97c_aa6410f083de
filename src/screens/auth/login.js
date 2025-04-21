@@ -163,7 +163,7 @@ useEffect(() => {
           <Stack direction={'column'} sx={{ width: '100%', minHeight: '100vh', alignItems: 'center', justifyContent: 'center', gap: '16px', bgcolor: 'rgba(255, 255, 255, 0.1)', py: 3}}>
             <Image sx={{ width: '77px' }} alt="logo" src={LogoIcon} />
             <Typography variant="h5" component="div" sx={{ fontWeight: "medium" }}>
-              Welcome To Company Name
+              Company Name
             </Typography>
             <Box sx={{ position: 'relative', maxWidth: '516px', display: 'flex', justifyContent: 'center', alignItems: 'center',borderRadius: '10px', boxShadow: "0 4px 4px rgba(0, 0, 0, 0.25)", p: '75px 63px', mt: '20px' }}>
                 <Stack direction="column" sx={{ alignItems: 'center' }} gap={3}>
@@ -173,7 +173,7 @@ useEffect(() => {
                     </Typography>
                     
                     <Typography variant="inherit" sx={{ color: '#000000', opacity: '80%', textAlign: 'center' }}>
-                      Enter your Email and we’ll send a confirmation code to reset your password.
+                      Enter your Email and we'll send a confirmation code to reset your password.
                     </Typography>
                     <Box style={{ display: 'flex', width: '100%' }}>
                       <Stack direction="column" sx={{ width: "100%", margin: '50px 0 30px 0',  }}>
@@ -339,7 +339,7 @@ const Component = (props) => {
             <RenderLogin controls={row.login} type={type} setPasswordForm={(e) => setPasswordForm(e)}/>
             <Stack direction={'column'} gap={1} sx={{ width: '100%', alignItems: 'center'}}>
               <Typography variant="inherit">
-                Don’t have an account? 
+                Don't have an account? 
                 <span onClick={() => navigate("/signup")} style={{ cursor: "pointer", color: '#1976D2', marginLeft: 8, fontWeight: 'bold' }}>Signup</span>
               </Typography>
               <Typography variant="inherit" onClick={() => navigate("/signup")} sx={{ cursor: "pointer" }}>
